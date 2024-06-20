@@ -1,0 +1,44 @@
+function logar() {
+
+    let login = document.getElementById("username").value;
+    let senha = document.getElementById("password").value;
+    let selecao = document.getElementById("select").value;
+
+    if (login != "" || senha != "" || selecao != "0" ) {
+
+        if (login === "nelso" && senha === "12345" && selecao ==="1") {
+            let token = "nelso";
+            JSON.stringify(token);
+            localStorage.setItem("token", token);
+            window.location.href = "Administrador.html";
+
+        } else if  (login === "ademar" && senha === "123456789" && selecao ==="2") { 
+
+            let token = "ademar";
+            JSON.stringify(token);
+            localStorage.setItem("token", token);
+            window.location.href = "Cliente.html";
+
+        } else {
+
+            document.getElementById('respostaLogin').innerHTML = "Login ou senha incorretos, campo sem preenchimento ou conta inexistente!";
+        }
+        
+    } else {
+        document.getElementById('respostaLogin').innerHTML = "Preencha todos os campos!";
+    }
+}
+''
+
+
+  <script>
+    window.onload = function () {
+      let tokenString = localStorage.getItem('token');
+
+      if (tokenString === "nelso") {
+        document.getElementById('token').innerHTML = "Bem vindo, Administrador Nelso!";
+      } else {
+        window.location.href = "../login.html";
+      }
+    };
+  </script>
